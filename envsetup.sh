@@ -622,6 +622,7 @@ function brunch()
 function breakfast()
 {
     target=$1
+    local variant=$2
     WAVE_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
@@ -641,6 +642,9 @@ function breakfast()
             # A buildtype was specified, assume a full device name
             lunch $target
         else
+            if [ -z "$variant" ]; then
+                variant="userdebug"
+            fi
             lunch wave_$target-userdebug
         fi
     fi
