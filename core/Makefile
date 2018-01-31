@@ -3098,8 +3098,20 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(WAVE_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(WAVE_TARGET_PACKAGE) > $(WAVE_TARGET_PACKAGE).md5sum
-	@echo "**Package complete"**: $(WAVE_TARGET_PACKAGE)"
-
+        echo -e ${CL_RED}"  ▄ ▄   ██       ▄   ▄███▄   ████▄    ▄▄▄▄▄   "${CL_RED}
+        echo -e ${CL_RED}" █   █  █ █       █  █▀   ▀  █   █   █     ▀▄ "${CL_RED}
+        echo -e ${CL_RED}"█ ▄   █ █▄▄█ █     █ ██▄▄    █   █ ▄  ▀▀▀▀▄   "${CL_RED}
+        echo -e ${CL_RED}"█  █  █ █  █  █    █ █▄   ▄▀ ▀████  ▀▄▄▄▄▀    "${CL_RED}
+        echo -e ${CL_RED}" █ █ █     █   █  █  ▀███▀                    "${CL_RED}
+        echo -e ${CL_RED}"  ▀ ▀     █     █▐                            "${CL_RED}
+        echo -e ${CL_RED}"         ▀      ▐                             "${CL_RED}
+        @echo -e ""
+	@echo -e ${CL_YLW} " Destiny Still Arives" ${CL_YLW}
+	@echo -e ${CL_BLD}${CL_RED}"===============================-Package complete-==============================="${CL_RED}
+	@echo -e ${CL_BLD}${CL_YLW}"Zip: "${CL_YLW} $(TARGET_PACKAGE)${CL_RST}
+	@echo -e ${CL_BLD}${CL_YLW}"MD5: "${CL_YLW}" `cat $(TARGET_PACKAGE).md5sum | awk '{print $$1}' `"${CL_RST}
+	@echo -e ${CL_BLD}${CL_YLW}"Size:"${CL_YLW}" `du -sh $(TARGET_PACKAGE) | awk '{print $$1}' `"${CL_RST}
+	@echo -e ${CL_BLD}${CL_RED}"================================================================================"${CL_RED}
 endif    # build_ota_package
 
 # -----------------------------------------------------------------
